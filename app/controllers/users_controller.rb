@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
   end
 
-  def set_cocktail
+  def set_user
     @user = User.find(params[:id])
   end
 end
