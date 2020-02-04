@@ -7,7 +7,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    @review = Review.new
+    @booking = Booking.new # This enables new booking in the show page
   end
 
   def new
@@ -28,12 +28,16 @@ class PetsController < ApplicationController
 
   def update
     @pet.update(pet_params)
-    redirect_to pet_path(@pet)
+    if @pet.save
+      redirect_to pet_path(@pet)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @pet.destroy
-    redirect_to pet_path(@pet)
+    redirect_to root_path
   end
 
   private
