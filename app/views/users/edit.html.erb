@@ -10,7 +10,9 @@
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
-
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Cancel', user_path(@user), class: "btn btn-warning" %>
   </div>
 
 </div>
