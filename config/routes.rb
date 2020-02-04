@@ -5,7 +5,4 @@ Rails.application.routes.draw do
   resources :pets do
     resources :bookings
   end
-  resources :bookings do
-    resources :reviews, except: %i[index show]
-  end
 end
