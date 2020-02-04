@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: %i[show edit update]
   before_action :set_booking
+
   def new
     @review = Review.new
   end
@@ -31,6 +33,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_booking
-     @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
   end
 end
