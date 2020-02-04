@@ -1,6 +1,4 @@
 class PetsController < ApplicationController
-<<<<<<< HEAD
-=======
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_pet, only: %i[show edit update destroy]
 
@@ -47,5 +45,4 @@ class PetsController < ApplicationController
   def set_pet
     @pet = Pet.find(params[:id])
   end
->>>>>>> 945b1093fd774c18bdca0d434859964eb5569c00
 end
