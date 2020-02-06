@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
-<<<<<<< HEAD
-=======
 
   def show
   end
->>>>>>> 5ca20b0be511751d6be17292d7ba4c52e8ea1f79
 
   def edit
     @user = User.find(params[:id])
