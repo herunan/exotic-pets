@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
-  def all
-    @users = User.all
+  def show
   end
 
   def edit
@@ -11,13 +10,18 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
 
   def set_user
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def user_params
