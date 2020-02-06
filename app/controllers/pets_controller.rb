@@ -20,7 +20,7 @@ class PetsController < ApplicationController
     @pet.user = current_user
     authorize @pet
     if @pet.save
-      redirect_to pet_path(@petet)
+      redirect_to pet_path(@pet)
     else
       render :new
     end
