@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 ruby '2.6.3'
 
 gem 'dotenv-rails', groups: [:development, :test]
-
+# Cloudinary
 gem 'cloudinary', '~> 1.12.0'
-
+# Fake Date
 gem 'faker'
+#Date picker
+gem 'bootstrap-datepicker-rails'
 
 gem 'bootsnap', require: false
 gem 'devise'

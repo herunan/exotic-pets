@@ -2,4 +2,6 @@
 <h2><%= @pet.address %></h2>
 <h2><%= @pet.species %></h2>
 
+
 <%= link_to "Edit pet", edit_pet_path(@pet) %>
+<%= link_to "Book form", new_pet_booking_path(@pet) %>
