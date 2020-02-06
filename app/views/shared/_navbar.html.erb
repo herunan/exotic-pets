@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "pets", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://github.com/herunan/exotic-pets/blob/master/app/assets/images/logo.png" %>
     <% end %>
 
@@ -12,13 +12,13 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "home", class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "List a pet", "/pets/new", class: "nav-link" %>
+          <%= link_to "List a pet", new_pet_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", "users/sign_up", class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
         </li>
         <li>
           <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
