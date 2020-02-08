@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://github.com/herunan/exotic-pets/blob/master/app/assets/images/logo.png" %>
+    <%= image_tag "logo.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,8 +9,6 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <p><%= current_user.email %></p>
-    <p><%= current_user.id %></p>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
