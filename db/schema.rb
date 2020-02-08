@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_103919) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", precision: 8, scale: 2
+    t.integer "price"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
