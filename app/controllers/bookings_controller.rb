@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -18,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to new_pet_booking_path(@booking)
     else
       render :new
     end
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
   def update
     @booking.update(booking_params)
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to edit_pet_booking_path(@booking)
     else
       render :edit
     end
