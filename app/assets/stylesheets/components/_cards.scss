@@ -1,9 +1,13 @@
 /* Cards browse */
 
 .cards-browse {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  & a {
+    color: black;
+  }
   & a:hover {
     text-decoration: none;
   }
@@ -29,13 +33,29 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-pet > img {
+.card-pet-image {
+  position: relative;
+}
+
+.card-pet-image > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.card-pet h2 {
+.card-pet-species {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+  background-color: black;
+  position: absolute;
+  padding: 4px;
+  bottom: 8px;
+  left: 16px;
+}
+
+.card-pet-name {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
@@ -45,8 +65,14 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  text-overflow: ellipsis;
 }
 
+.card-pet-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
 
 .card-pet .card-pet-infos {
   padding: 16px;
