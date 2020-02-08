@@ -11,16 +11,16 @@ require 'open-uri'
 url = 'https://source.unsplash.com/featured/?'
 
 puts 'Clearing users, pets and bookings'
-User.destroy_all
-Pet.destroy_all
 Booking.destroy_all
+Pet.destroy_all
+User.destroy_all
 
 Faker::Config.locale = 'en-GB'
 
 puts 'Creating users and pets'
 5.times do
   gender = ['man', 'woman'].sample
-  user = User.new(
+  user = User.create!(
     first_name: gender == 'male' ? Faker::Name.male_first_name : Faker::Name.female_first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
@@ -36,15 +36,15 @@ puts 'Creating users and pets'
       species: species,
       description: Faker::Lorem.paragraph_by_chars(number: 256),
       address: Faker::Address.full_address,
-      price: rand(200..10000)
+      price: rand(200..10000),
+      user: user
     )
     rand(1..5).times do
       pet.photos.attach(io: open(url + pet.species), filename: species)
     end
-    pet.user = user
+    # pet.user = user
     pet.save!
   end
-  user.save!
 end
 
 puts "Complete!"
