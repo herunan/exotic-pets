@@ -79,11 +79,6 @@
         </div>
       <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-primary" %>
       <%= link_to "Book form", new_pet_booking_path(@pet), class: "btn btn-primary" %>
-      <h1><%= @pet.name%></h1>
-      <h2><%= @pet.address %></h2>
-      <h2><%= @pet.species %></h2>
-      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-warning" %>
-      <%= link_to "Book here", new_pet_booking_path(@pet), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
