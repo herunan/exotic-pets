@@ -24,7 +24,7 @@ puts 'Creating users and pets'
     first_name: gender == 'male' ? Faker::Name.male_first_name : Faker::Name.female_first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
-    phone_number: Faker::PhoneNumber,
+    phone_number: Faker::PhoneNumber.phone_number,
     bio: Faker::Lorem.paragraph_by_chars(number: 256),
     password: '123456',
   )
