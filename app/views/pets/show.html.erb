@@ -1,3 +1,59 @@
+<div class="contain-pets">
+  <div class="contain-main">
+    <%= cl_image_tag "aj1avj6mn9vemtiudbp0", height: 300, width: 800, crop: :fill %>
+  </div>
+
+
+  <div class= "contain-pet">
+    <div class="pet">
+      <%= cl_image_tag "bwspwor9mzpzajygmu8j", height: 150, width: 400, crop: :fill %>
+    </div>
+    <div class="pet">
+      <%= cl_image_tag "is3zy7y2mxuprn86kb8j", height: 150, width: 400, crop: :fill %>
+    </div>
+  </div>
+
+  <div class= "contain-pet">
+    <div class="pet">
+      <%= cl_image_tag "qvcrz3xxwi1nyl6j9vty", height: 150, width: 400, crop: :fill %>
+    </div>
+    <div class="pet">
+      <%= cl_image_tag "mtjuoabv0qtivn7r0bu8", height: 150, width: 400, crop: :fill %>
+    </div>
+  </div>
+
+
+</div>
+
+<!--
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="..." alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+ -->
+
 <h1><%= @pet.name%></h1>
 <h2><%= @pet.address %></h2>
 <h2><%= @pet.species %></h2>
@@ -5,3 +61,4 @@
 
 <%= link_to "Edit pet", edit_pet_path(@pet) %>
 <%= link_to "Book form", new_pet_booking_path(@pet) %>
+

@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    true # Anyone can see a user
+    true
   end
 
   def create?

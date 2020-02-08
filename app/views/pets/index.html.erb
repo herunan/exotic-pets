@@ -1,6 +1,26 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <h1>All our pets</h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-12">
+      <div class="cards-browse">
+
+        <% @pets.each do |pet| %>
+          <%= link_to pet_path(pet) do %>
+            <div class="card-pet">
+              <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
+              <div class="card-pet-infos">
+                <div>
+                  <h2><%= pet.name %></h2>
+                  <p><%= pet.description %></p>
+                </div>
+                <h2 class="card-pet-price"><%= pet.price %>/day</h2>
+                <img src=<%= cl_image_path pet.user.photo.key, height: 40, crop: :thumb, gravity: :face if pet.user.photo.attached? %> />
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <br>
+      </div>
+      <%= link_to "Add your exotic pet", new_pet_path(@pet), class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
-
