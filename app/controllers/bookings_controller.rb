@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
   before_action :set_pet, only: %i[new create]
+  skip_before_action :authenticate_user!, only: %i[new]
+
 
   def index
     @bookings = Booking.all
