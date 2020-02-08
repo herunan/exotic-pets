@@ -1,1 +1,8 @@
-<h1> Hi</h1>
+<div class="container">
+  <h1> Book this pet</h1>
+<%= simple_form_for [@pet, @booking], url: pet_bookings_path(@pet) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "New Booking"%>
+<% end %>
+</div>

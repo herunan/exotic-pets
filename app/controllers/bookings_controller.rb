@@ -1,11 +1,15 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_pet, only: %i[new create]
   skip_before_action :authenticate_user!, only: %i[new]
+
 
   def index
     @bookings = Booking.all
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -16,9 +20,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.pet = @pet
     authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to pet_booking_path(@pet, @booking)
     else
       render :new
     end
@@ -30,7 +35,7 @@ class BookingsController < ApplicationController
   def update
     @booking.update(booking_params)
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to edit_pet_booking_path(@booking)
     else
       render :edit
     end
@@ -50,5 +55,9 @@ class BookingsController < ApplicationController
   def set_booking
     @booking = Booking.find(params[:id])
     authorize @booking
+  end
+
+  def set_pet
+    @pet = Pet.find(params[:pet_id])
   end
 end
