@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo.png" %> <i class="title">Exotic Pets</i>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,15 +9,9 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% if user_signed_in? %>
-      <p><%= current_user.email %></p>
-      <p><%= current_user.id %></p>
-    <% end %>
 
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li><%= current_user.email %></li>
-        <li><%= current_user.id %></li>
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
@@ -38,7 +32,6 @@
       </form>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Profile",  user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
