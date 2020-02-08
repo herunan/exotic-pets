@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_pet
 
   def index
     @bookings = Booking.all
@@ -51,5 +52,9 @@ class BookingsController < ApplicationController
   def set_booking
     @booking = Booking.find(params[:id])
     authorize @booking
+  end
+
+  def set_pet
+    @pet = Pet.find(params[:pet_id])
   end
 end

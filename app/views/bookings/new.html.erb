@@ -1,6 +1,6 @@
 <div class="container">
   <h1> Book this pet</h1>
-<%= simple_form_for [@pet, @booking] do |f| %>
+<%= simple_form_for [@pet, @booking], url: new_pet_booking_path(@pet), method: :post do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :review %>
