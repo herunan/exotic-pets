@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_booking, only: %i[show new edit update destroy]
 
   def index
     @bookings = Booking.all
@@ -10,10 +10,13 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
