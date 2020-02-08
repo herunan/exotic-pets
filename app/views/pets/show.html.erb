@@ -67,11 +67,18 @@
  <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
-      <h1><%= @pet.name%></h1>
-      <h2><%= @pet.address %></h2>
-      <h2><%= @pet.species %></h2>
-      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-warning" %>
-      <%= link_to "Book here", new_pet_booking_path(@pet), class: "btn btn-primary" %>
+        <div class="d-inline-flex p-2">
+          <h1><%= @pet.name%></h1>
+          <div class="ml-4">
+            <img class="avatar-bordered" src=<%= cl_image_path @pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if @pet.user.photo.attached? %> />
+          </div>
+        </div>
+        <div class="p-2">
+          <h2><%= @pet.address %></h2>
+          <h2><%= @pet.species %></h2>
+        </div>
+      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-primary" %>
+      <%= link_to "Book form", new_pet_booking_path(@pet), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
