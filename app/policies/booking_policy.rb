@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    false # Only signed in users
+    true # Only signed in users
   end
 
   def create?
