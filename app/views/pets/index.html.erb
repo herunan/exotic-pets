@@ -6,14 +6,17 @@
         <% @pets.each do |pet| %>
           <%= link_to pet_path(pet) do %>
             <div class="card-pet">
-              <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
+              <div class="card-pet-image">
+                <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
+                <h2 class="card-pet-species" ><%= pet.species.capitalize %></h2>
+              </div>
               <div class="card-pet-infos">
                 <div>
-                  <h2><%= pet.name %></h2>
-                  <p><%= pet.description %></p>
+                  <h2 class="card-pet-name"><%= pet.name %></h2>
+                  <p><%= pet.description.truncate(60, separator: /\s/) %></p>
                 </div>
-                <h2 class="card-pet-price"><%= pet.price %>/day</h2>
-                <img src=<%= cl_image_path pet.user.photo.key, height: 40, crop: :thumb, gravity: :face if pet.user.photo.attached? %> />
+                <h2 class="card-pet-price">£<%= pet.price %>0/day</h2>
+                <img class="card-pet-user avatar-bordered" src=<%= cl_image_path pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if pet.user.photo.attached? %> />
               </div>
             </div>
           <% end %>
