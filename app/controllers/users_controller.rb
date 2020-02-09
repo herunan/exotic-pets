@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show]
   before_action :set_user, only: %i[show]
 
   def show
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :phone_number, :photo)
+    params.require(:user).permit(:first_name, :last_name, :bio, :phone_number, :photo)
   end
 end

@@ -60,17 +60,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_103919) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", precision: 8, scale: 2
+    t.integer "price"
     t.index ["user_id"], name: "index_pets_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.integer "rating"
-    t.bigint "booking_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,5 +84,4 @@ ActiveRecord::Schema.define(version: 2020_02_08_103919) do
   add_foreign_key "bookings", "pets"
   add_foreign_key "bookings", "users"
   add_foreign_key "pets", "users"
-  add_foreign_key "reviews", "bookings"
 end
