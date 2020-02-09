@@ -31,7 +31,7 @@
   </div>
 </div>
  -->
- <div style="background-color: black;">
+<div style="background-color: black;">
   <div class="container">
     <div class="row">
       <div class="col-2"></div>
@@ -46,7 +46,7 @@
           <div class="carousel-inner">
             <% @pet.photos.each_with_index do |photo, index|  %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= image_tag photo, height: 500, crop: :fill, class: "d-block w-100" %>
+              <%= image_tag photo, height: 500, crop: :fit, class: "d-block w-100" %>
             </div>
             <% end %>
           </div>
@@ -64,6 +64,7 @@
   </div>
 </div>
 
+
  <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
@@ -77,8 +78,9 @@
           <h2><%= @pet.address %></h2>
           <h2><%= @pet.species %></h2>
         </div>
-      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-primary" %>
-      <%= link_to "Book form", new_pet_booking_path(@pet), class: "btn btn-primary" %>
+      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-warning" %>
+      <%= link_to "Book pet", new_pet_booking_path(@pet), class: "btn btn-success" %>
+      <%= link_to "Delete", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary"%>
     </div>
   </div>
 </div>
