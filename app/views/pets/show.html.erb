@@ -78,9 +78,9 @@
           <h2><%= @pet.address %></h2>
           <h2><%= @pet.species %></h2>
         </div>
-      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-primary" %>
-      <%= link_to "Book form", new_pet_booking_path(@pet), class: "btn btn-primary" %>
-      <%= link_to "delete", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }%>
+      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-warning" %>
+      <%= link_to "Book pet", new_pet_booking_path(@pet), class: "btn btn-success" %>
+      <%= link_to "Delete", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary"%>
     </div>
   </div>
 </div>
