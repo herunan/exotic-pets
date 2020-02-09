@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#  Geocoder.configure(
-=======
-Geocoder.configure(
->>>>>>> master
+  # Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
@@ -21,12 +17,6 @@ Geocoder.configure(
   # always_raise: [],
 
   # Calculation options
-<<<<<<< HEAD
   # units: :km,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
 #)
-=======
-   units: :km,                 # :km for kilometers or :mi for miles
-  # distances: :linear          # :spherical or :linear
-)
->>>>>>> master
