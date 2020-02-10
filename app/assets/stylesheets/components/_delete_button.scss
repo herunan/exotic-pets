@@ -1,0 +1,54 @@
+.btn-delete {
+  color: white;
+  background-color: $fusion-red;
+  margin: 1rem 0rem;
+}
+
+.btn-delete:focus,
+.btn-delete.focus {
+  color: white;
+  background-color: $desire;
+}
+
+.btn-delete:hover {
+  color: white;
+  background-color: $desire;
+}
+
+.btn-delete:active,
+.btn-delete.active,
+.open > .dropdown-toggle.btn-delete {
+  color: white;
+  background-color: $desire;
+  background-image: none;
+}
+
+.btn-delete:active:hover,
+.btn-delete.active:hover,
+.open > .dropdown-toggle.btn-delete:hover,
+.btn-delete:active:focus,
+.btn-delete.active:focus,
+.open > .dropdown-toggle.btn-delete:focus,
+.btn-delete:active.focus,
+.btn-delete.active.focus,
+.open > .dropdown-toggle.btn-delete.focus {
+  color: white;
+  background-color: $desire;
+}
+
+.btn-delete.disabled:hover,
+.btn-delete[disabled]:hover,
+fieldset[disabled] .btn-delete:hover,
+.btn-delete.disabled:focus,
+.btn-delete[disabled]:focus,
+fieldset[disabled] .btn-delete:focus,
+.btn-delete.disabled.focus,
+.btn-delete[disabled].focus,
+fieldset[disabled] .btn-delete.focus {
+  background-color: $desire;
+}
+
+.btn-delete .badge {
+  color: $fusion-red;
+  background-color: white;
+}

@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+
+  helpers:
+    submit:
+      pet:
+        create: "List pet"
+        edit: "Edit %{model}"
+        update: "Save changes"
+        destroy: "Remove listing"
+      booking:
+        create: "Borrow pet"
+        edit: "Edit borrow request"
+        update: "Save changes"
+        destroy: "Cancel borrow request"

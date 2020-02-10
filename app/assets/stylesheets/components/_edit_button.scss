@@ -1,0 +1,54 @@
+.btn-edit {
+  color: white;
+  background-color: $blue-grey;
+  margin: 1rem 0rem;
+}
+
+.btn-edit:focus,
+.btn-edit.focus {
+  color: white;
+  background-color: $blue-horizon;
+}
+
+.btn-edit:hover {
+  color: white;
+  background-color: $blue-horizon;
+}
+
+.btn-edit:active,
+.btn-edit.active,
+.open > .dropdown-toggle.btn-edit {
+  color: white;
+  background-color: $blue-horizon;
+  background-image: none;
+}
+
+.btn-edit:active:hover,
+.btn-edit.active:hover,
+.open > .dropdown-toggle.btn-edit:hover,
+.btn-edit:active:focus,
+.btn-edit.active:focus,
+.open > .dropdown-toggle.btn-edit:focus,
+.btn-edit:active.focus,
+.btn-edit.active.focus,
+.open > .dropdown-toggle.btn-edit.focus {
+  color: white;
+  background-color: $blue-horizon;
+}
+
+.btn-edit.disabled:hover,
+.btn-edit[disabled]:hover,
+fieldset[disabled] .btn-edit:hover,
+.btn-edit.disabled:focus,
+.btn-edit[disabled]:focus,
+fieldset[disabled] .btn-edit:focus,
+.btn-edit.disabled.focus,
+.btn-edit[disabled].focus,
+fieldset[disabled] .btn-edit.focus {
+  background-color: $blue-horizon;
+}
+
+.btn-edit .badge {
+  color: $blue-grey;
+  background-color: white;
+}

@@ -1,0 +1,34 @@
+#navbar-search {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  padding: 0;
+  background-color: black;
+  border: none;
+  color: $reptile-green;
+  width: 135px;
+  border-radius: 0;
+  border-bottom: 1px solid  $reptile-green;
+  transition: $quick;
+  &::placeholder {
+    color:  $reptile-green;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  &:hover::placeholder {
+    color: $algal-fuel;
+  }
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    &::placeholder {
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+#navbar-search {
+  margin: 0;
+  }
+}

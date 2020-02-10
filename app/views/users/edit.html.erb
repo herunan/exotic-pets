@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex justify-content-center">
-    <h1> Edit your info</h1>
+    <h1>Edit your info</h1>
   </div>
   <div class="d-flex justify-content-center">
       <%= simple_form_for @user do |f| %>
@@ -8,11 +8,11 @@
         <%= f.input :last_name %>
         <%= f.input :phone_number %>
         <%= f.input :photo, as: :file %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn btn-create" %>
   <% end %>
   </div>
   <div class="d-flex justify-content-center">
-    <%= link_to 'Cancel', user_path(@user), class: "btn btn-warning" %>
+    <%= link_to 'Cancel', user_path(@user), class: "btn btn-edit" %>
   </div>
 
 </div>
