@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
-
-        <h1>Borrow @pet.name</h1>
-
+    <h1>Borrow @pet.name</h1>
       <%= simple_form_for [@pet, @booking], url: pet_bookings_path(@pet) do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
+        <div>
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date, class: 'form-control',  data:{ provide:'datepicker' } %>
+        </div>
+        <%= f.label :end_date %>
+        <%= f.text_field :end_date, class: 'form-control', data:{ provide:'datepicker' } %>
         <%= f.submit "New Booking"%>
       <% end %>
-
     </div>
   </div>
 </div>

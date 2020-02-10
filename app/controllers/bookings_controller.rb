@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
     @booking.pet = @pet
     authorize @booking
     if @booking.save
+      flash[:alert] = "Booking confirmed"
       redirect_to pet_booking_path(@pet, @booking)
     else
       render :new
