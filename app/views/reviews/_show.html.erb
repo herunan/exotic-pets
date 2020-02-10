@@ -1,0 +1,6 @@
+<p id="review">
+  <% review.rating.to_i.times do %>
+    <i id="star-rating" class="fas fa-star"></i>
+  <% end %>
+  <%= " — " + review.content unless review.content.blank? %>
+</p>

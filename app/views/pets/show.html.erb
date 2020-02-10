@@ -1,72 +1,74 @@
-<!-- <div class="contain-pets" type="button" data-toggle="modal" data-target="#myModal">
-  <div class="contain-main">
-    <button type="button" data-toggle="modal" data-target="#myModal">
-      <%= cl_image_tag "aj1avj6mn9vemtiudbp0", height: 150, width: 400, crop: :fill %>
-    </button>
-  </div>
-  <div class= "contain-pet">
-    <div class="pet">
-      <button type="button" data-toggle="modal" data-target="#myModal">
-        <%= cl_image_tag "bwspwor9mzpzajygmu8j", height: 150, width: 400, crop: :fill %>
-      </button>
-    </div>
-    <div class="pet">
-      <button type="button" data-toggle="modal" data-target="#myModal">
-        <%= cl_image_tag "is3zy7y2mxuprn86kb8j", height: 150, width: 400, crop: :fill %>
-      </button>
-    </div>
-  </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
 
-  <div class= "contain-pet">
-    <div class="pet">
-      <button type="button" data-toggle="modal" data-target="#myModal">
-        <%= cl_image_tag "qvcrz3xxwi1nyl6j9vty", height: 150, width: 400, crop: :fill %>
-      </button>
-    </div>
-    <div class="pet">
-      <button type="button" data-toggle="modal" data-target="#myModal">
-        <%= cl_image_tag "mtjuoabv0qtivn7r0bu8", height: 150, width: 400, crop: :fill %>
-      </button>
-    </div>
-  </div>
-</div>
- -->
-<div style="background-color: black;">
-  <div class="container">
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <div class="col-2"></div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <% @pet.photos.each_with_index do |_, index|  %>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <% @pet.photos.each_with_index do |_, index| %>
             <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-            <% end %>
-          </ol>
-          <div class="carousel-inner">
-            <% @pet.photos.each_with_index do |photo, index|  %>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% @pet.photos.each_with_index do |photo, index|  %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= image_tag photo, height: 500, crop: :fit, class: "d-block w-100" %>
+              <%= image_tag photo, width: 1000, crop: :fit, class: "d-block w-100" %>
             </div>
-            <% end %>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          <% end %>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
   </div>
-</div>
 
- <div class="container">
+  <div id="pet-show" class="container">
+    <div class="row justify-content-between">
+      <div id="method" class="col-12 col-md-6">
+        <h2><%= @pet.name %></h2>
+        <%= simple_format @pet.description %>
+        <%= link_to '<i class="fa fa-arrow-left"></i> Back to listings'.html_safe, root_path, class: "link" %>
+      </div>
+      <div id="booking-form" class="col-12 col-md-4">
+        <h2>Borrow</h2>
+        <% if @booking.pet == @pet && @booking.user == current_user %>
+          <p>Thanks for your borrow request for the @pet.species @pet.name!</p>
+        <% else %>
+          <%= render 'bookings/form', pet: @pet, booking: @booking %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div id="reviews" class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <h2>Did you try this <%= @cocktail.name %>? <strong>Review it!</strong></h2>
+        <% if @booking.reviews.blank? %>
+          <p id="no-review">Be the first to leave a review for the <%= @cocktail.name %></p>
+        <% else %>
+          <% @booking.reviews.each do |review| %>
+            <%= render 'bookings/review_show', review: review %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-12">
+    <div class="col-12 col-lg-6">
+
+
         <div class="d-inline-flex p-2">
           <h1><%= @pet.name%></h1>
           <div class="ml-4">
@@ -83,4 +85,5 @@
     </div>
   </div>
 </div>
+
 
