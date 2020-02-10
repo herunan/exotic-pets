@@ -1,1 +1,4 @@
-import "bootstrap";
+import 'bootstrap';
+
+import { animateToggler } from '../components/toggler';
+animateToggler();

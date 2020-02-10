@@ -1,12 +1,45 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: #ff6d00;
+  background-color: black;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-brand {
+  padding: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 0px;
+  color: $reptile-green !important;
+  fill: $reptile-green;
+  transition: $quick;
+  &:hover {
+    fill: $algal-fuel;
+    color: $algal-fuel !important;
+    // background: linear-gradient(90deg, $algal-fuel, $algal-fuel, $desire) !important;
+    // background-clip: text !important;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // -webkit-box-decoration-break: clone;
+    // box-decoration-break: clone;
+    // text-shadow: none;
+  }
+  &:hover #left-eye, &:hover #right-eye {
+    fill: $desire;
+  }
+}
+
+#left-eye, #right-eye {
+  transition: $quick;
+}
+
+
+.navbar-lewagon .nav-link {
+  color: $reptile-green !important;
+  transition: $quick;
+  &:hover {
+    color: $algal-fuel !important;
+  }
 }

@@ -1,11 +1,19 @@
-<h1>Hello New Pets</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-12">
 
-<%= simple_form_for @pet do |f| %>
-  <%= f.input :name %>
-  <%= f.input :species %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit "New Pet"%>
-<% end %>
+      <h1>List your exotic pet</h1>
+
+      <%= simple_form_for @pet do |f| %>
+        <%= f.input :name %>
+        <%= f.input :species %>
+        <%= f.input :description %>
+        <%= f.input :price %>
+        <%= f.input :address %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.button :submit %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,40 +1,32 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %> <i class="title">Exotic Pets</i>
-    <% end %>
+    <%= render "shared/logo" %>
+    Exotic Pets
+  <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <!-- Collapse button -->
+  <button class="navbar-toggler hamburger" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="animated-toggler"><span></span><span></span><span></span></div>
   </button>
 
-
+  <!-- Collapsible content -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+    <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
         <li class="nav-item">
-          <%= link_to "List a pet", new_pet_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "List your pet", new_pet_path, class: "nav-link" %>
         </li>
         <li>
-          <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-          <div class="search-form-control form-group">
-            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-            <button name="button" type="submit" class="btn btn-flat">
-              <i class="fas fa-search"></i> Search
-            </button>
-          </div>
-      </form>
+          <!-- Search bar -->
+          <form class="form-inline my-lg-0">
+            <input id="navbar-search" class="form-control mr-sm-2" type="search" placeholder="&#xf002;" aria-label="Search" name="query">
         </li>
+        <!-- Avatar with dropdown -->
         <li class="nav-item dropdown">
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Profile",  user_path(current_user), class: "dropdown-item" %>
+          <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
