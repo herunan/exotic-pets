@@ -11,7 +11,7 @@
         <div class="carousel-inner">
           <% @pet.photos.each_with_index do |photo, index|  %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= image_tag photo, width: 1000, crop: :fit, class: "d-block w-100" %>
+              <%= image_tag photo, height: 500, crop: :fit, class: "d-block w-100" %>
             </div>
           <% end %>
         </div>
@@ -29,8 +29,14 @@
 
   <div id="pet-show" class="container">
     <div class="row justify-content-between">
-      <div id="method" class="col-12 col-md-6">
-        <h2><%= @pet.name %></h2>
+      <div id="pet-details" class="col-12 col-md-6">
+        <img class="avatar-bordered" src=<%= cl_image_path @pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if @pet.user.photo.attached? %> />
+        <h1><%= @pet.name %></h1>
+        <h2><%= @pet.address %></h2>
+        <h2><%= @pet.species.capitalize %></h2>
+        <%= link_to "Borrow pet", new_pet_booking_path(@pet), class: "btn btn-create" %>
+        <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-edit" %>
+        <%= link_to "Remove pet", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete"%>
         <%= simple_format @pet.description %>
         <%= link_to '<i class="fa fa-arrow-left"></i> Back to listings'.html_safe, root_path, class: "link" %>
       </div>
@@ -47,41 +53,15 @@
   <div id="reviews" class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12 col-md-6">
-        <h2>Did you try this <%= @cocktail.name %>? <strong>Review it!</strong></h2>
+        <h2>Reviews for <%= @pet.name %>?</h2>
         <% if @booking.reviews.blank? %>
-          <p id="no-review">Be the first to leave a review for the <%= @cocktail.name %></p>
+          <p id="no-review">No reviews yet.</p>
         <% else %>
           <% @booking.reviews.each do |review| %>
-            <%= render 'bookings/review_show', review: review %>
+            <%= render 'reviews/show', review: review %>
           <% end %>
         <% end %>
       </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-
-
-        <div class="d-inline-flex p-2">
-          <h1><%= @pet.name%></h1>
-          <div class="ml-4">
-            <img class="avatar-bordered" src=<%= cl_image_path @pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if @pet.user.photo.attached? %> />
-          </div>
-        </div>
-        <div class="p-2">
-          <h2><%= @pet.address %></h2>
-          <h2><%= @pet.species %></h2>
-        </div>
-      <%= link_to "Borrow pet", new_pet_booking_path(@pet), class: "btn btn-create" %>
-      <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-edit" %>
-      <%= link_to "Remove pet", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete"%>
     </div>
   </div>
 </div>
