@@ -1,5 +1,5 @@
-<%= simple_form_for @booking do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+<%= simple_form_for [@pet, @booking], url: pet_bookings_path(@pet) do |f| %>
+  <%= f.input :start_date, class: 'form-control',  data:{ provide:'datepicker' } %>
+  <%= f.input :end_date, class: 'form-control',  data:{ provide:'datepicker' } %>
   <%= f.button :submit %>
 <% end %>
