@@ -1,39 +1,44 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <h1 class= "green">Congrats!</h1>
-  </div>
-  <h2> You have booked <%= @booking.pet.name %></h2>
-  <p> From : <%= @booking.start_date %> </p>
-  <p>To : <%= @booking.end_date %></p>
-  <div style="background-color: black;">
-  <div class="container">
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <div class="col-2"></div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <% @booking.pet.photos.each_with_index do |_, index|  %>
-            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-            <% end %>
-          </ol>
-          <div class="carousel-inner">
-            <% @booking.pet.photos.each_with_index do |photo, index|  %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= image_tag photo, height: 500, crop: :fill, class: "d-block w-100" %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-12">
+
+      <h1 class= "green">Congrats!</h1>
+      <h2> You have booked <%= @booking.pet.name %></h2>
+      <p> From : <%= @booking.start_date %> </p>
+      <p>To : <%= @booking.end_date %></p>
+      <div style="background-color: black;">
+      <div class="container">
+        <div class="row">
+          <div class="col-2"></div>
+            <div class="col-8">
+              <div class="col-2"></div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <% @booking.pet.photos.each_with_index do |_, index|  %>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+                    <% end %>
+                  </ol>
+                  <div class="carousel-inner">
+                    <% @booking.pet.photos.each_with_index do |photo, index|  %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= image_tag photo, height: 500, crop: :fill, class: "d-block w-100" %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
             </div>
-            <% end %>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
-      </div>
+
     </div>
   </div>
 </div>
