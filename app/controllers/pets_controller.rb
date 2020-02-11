@@ -3,7 +3,12 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[show edit update destroy]
 
   def index
-    @pets = policy_scope(Pet)
+    if params[:query].present?
+      sql_query = "species @@ :query OR address @@ :query"
+      @pets = policy_scope(Pet).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @pets = policy_scope(Pet)
+    end
   end
 
   def show
