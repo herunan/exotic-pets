@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_204457) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rating"
-    t.text "review"
     t.index ["pet_id"], name: "index_bookings_on_pet_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
