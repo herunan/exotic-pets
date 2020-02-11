@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
   before_action :set_pet, only: %i[new create]
   skip_before_action :authenticate_user!, only: %i[new]
 
-
   def index
     @bookings = Booking.all
   end
@@ -23,9 +22,10 @@ class BookingsController < ApplicationController
     @booking.pet = @pet
     authorize @booking
     if @booking.save
-      flash[:alert] = "Booking confirmed"
-      redirect_to pet_booking_path(@pet, @booking)
+      flash[:alert] = "Borrowing requested"
+      redirect_to pet_bookings_path(@pet, @booking)
     else
+      raise
       render :new
     end
   end

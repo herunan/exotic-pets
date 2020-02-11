@@ -1,5 +1,5 @@
 <%= simple_form_for [ booking, review ] do |f| %>
   <%= f.input :rating, collection: 0..5, prompt: 'Number of stars', label: false %>
   <%= f.input :content, as: :text, placeholder: "Write your review", label: false %>
-  <%= f.submit "Post review" %>
+  <%= f.submit "Post review", class: "btn btn-create" %>
 <% end %>
