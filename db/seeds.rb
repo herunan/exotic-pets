@@ -33,6 +33,8 @@ puts 'Creating users and pets'
     species = Faker::Creature::Animal.name
     pet = Pet.new(
       name: Faker::Creature::Dog.name,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
       species: species,
       description: Faker::Lorem.paragraph_by_chars(number: 256),
       address: Faker::Address.full_address,

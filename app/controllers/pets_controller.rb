@@ -13,6 +13,16 @@ class PetsController < ApplicationController
 
   def show
     @booking = Booking.new # This enables new booking in the show page
+    @pet_location = Pet.geocoded #returns pet with coordinates
+
+    @markers = @pet_location.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet }),
+        image_url: helpers.asset_url('mark.png')
+      }
+    end
   end
 
   def new
