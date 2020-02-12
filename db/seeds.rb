@@ -11,6 +11,7 @@ require 'open-uri'
 url = 'https://source.unsplash.com/featured/?'
 
 puts 'Clearing users, pets and bookings'
+Review.destroy_all
 Booking.destroy_all
 Pet.destroy_all
 User.destroy_all
@@ -42,8 +43,8 @@ puts 'Creating users and pets'
     rand(1..5).times do
       pet.photos.attach(io: open(url + pet.species), filename: species)
     end
-    # pet.user = user
-    pet.save!
+    pet.user = user
+    pet.save
   end
 end
 

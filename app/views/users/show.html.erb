@@ -1,14 +1,42 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+      <%= cl_image_tag @user.photo.key, height: 112, class: "avatar-extra-large" if @user.photo.attached? %>
+      <p> <%= @user.email %> </p>
+      <p> <%= @user.phone_number %> </p>
+      <p> <%= @user.bio %> </p>
+      <%= link_to 'Edit details', edit_user_path(@user), class: "btn btn-edit" %>
+
+    </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, height: 200, width: 200 %>
-            <% end %>
-  </div>
-  <div class="d-flex justify-content-center">
-    <%= link_to 'Edit details', edit_user_path(@user), class: "btn btn-edit" %>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="cards-browse">
+
+        <% @user.bookings.each do |booking| %>
+          <%= link_to pet_booking_path(booking) do %>
+            <div class="card-pet">
+              <div class="card-pet-image">
+                <img src=<%= cl_image_path booking.pet.photos.first.key, height: 200, crop: :fill if booking.pet.photos.attached? %> />
+                <h2 class="card-pet-species" ><%= booking.pet.species.capitalize %></h2>
+              </div>
+              <div class="card-pet-infos">
+                <div>
+                  <h2 class="card-pet-name"><%= booking.pet.name %></h2>
+                  <p><%= booking.pet.description.truncate(60, separator: /\s/) %></p>
+                </div>
+                <h2 class="card-pet-price">£<%= booking.pet.price %>0/day</h2>
+                <img class="card-pet-user avatar-bordered" src=<%= cl_image_path booking.pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if booking.pet.user.photo.attached? %> />
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
   </div>
 
 </div>

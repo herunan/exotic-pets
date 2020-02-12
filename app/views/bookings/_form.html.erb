@@ -1,4 +1,4 @@
-<%= simple_form_for [@pet, @booking], url: pet_bookings_path(@pet) do |f| %>
+<%= simple_form_for [@pet, @booking] do |f| %>
   <%= f.text_field :start_date, class: 'form-control',  data:{ provide:'datepicker' } %>
   <%= f.text_field :end_date, class: 'form-control',  data:{ provide:'datepicker' } %>
   <%= f.submit "Borrow request", class: "btn btn-create" %>

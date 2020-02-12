@@ -1,0 +1,20 @@
+<% def pet_cards(instance, iterator) %>
+    <% instance.each do |iterator| %>
+    <%= link_to pet_booking_path(booking) do %>
+      <div class="card-pet">
+        <div class="card-pet-image">
+          <img src=<%= cl_image_path iterator.photos.first.key, height: 200, crop: :fill if iterator.photos.attached? %> />
+          <h2 class="card-pet-species" ><%= iterator.species.capitalize %></h2>
+        </div>
+        <div class="card-pet-infos">
+          <div>
+            <h2 class="card-pet-name"><%= iterator.name %></h2>
+            <p><%= iterator.description.truncate(60, separator: /\s/) %></p>
+          </div>
+          <h2 class="card-pet-price">£<%= iterator.price %>0/day</h2>
+          <img class="card-pet-user avatar-bordered" src=<%= cl_image_path iterator.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if iterator.user.photo.attached? %> />
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

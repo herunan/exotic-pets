@@ -1,14 +1,14 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_pet, only: %i[new create]
+  before_action :set_pet, only: %i[show new create]
   skip_before_action :authenticate_user!, only: %i[new]
 
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking)
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    @review = Review.new
   end
 
   def new
@@ -23,9 +23,8 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       flash[:alert] = "Borrowing requested"
-      redirect_to pet_bookings_path(@pet, @booking)
+      redirect_to pet_booking_path(@pet, @booking)
     else
-      raise
       render :new
     end
   end
@@ -36,7 +35,7 @@ class BookingsController < ApplicationController
   def update
     @booking.update(booking_params)
     if @booking.save
-      redirect_to edit_pet_booking_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :edit
     end
@@ -50,7 +49,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :pet_id, :start_date, :end_date, :confirmed)
+    params.require(:booking).permit(:start_date, :end_date, :confirmed, :user_id, :pet_id)
   end
 
   def set_booking
