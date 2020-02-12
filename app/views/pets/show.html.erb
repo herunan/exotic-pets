@@ -34,7 +34,7 @@
         <h1><%= @pet.name %></h1>
         <h2><%= @pet.address %></h2>
         <h2><%= @pet.species.capitalize %></h2>
-        <%= link_to "Borrow pet", new_pet_booking_path(@pet), class: "btn btn-create" %>
+        <%= link_to "Borrow pet", pet_bookings_path(@pet), class: "btn btn-create" %>
         <%= link_to "Edit pet", edit_pet_path(@pet), class: "btn btn-edit" %>
         <%= link_to "Remove pet", pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete"%>
         <%= simple_format @pet.description %>
