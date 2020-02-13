@@ -2,9 +2,10 @@
   align-items: center;
   display: flex;
   overflow: hidden;
-  background: black;
-  border-top: 2px;
+  background: white;
+  border: 2px;
   border-style: solid;
+  margin-top: 24px;
 }
 
 .contain-pet {
@@ -12,23 +13,29 @@
   width: 25%;
   height: 294.667px;
   overflow: hidden;
+  border: 2px;
+  border-style: solid;
+  background-size: cover;
 }
 
 .contain-main {
   position: relative;
+  background-size: cover;
   width: 50%;
   height: 294.667px;
   overflow: hidden;
   border-width: 1px;
+  border: 2px;
   border-style: solid;
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
+  opacity: 0.95;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     cursor:pointer;
     color: white;
     text-decoration: none;
-    border-width: 1px;
-    border-style: solid;
+    opacity: 1;
+    border: none;
   }
 }
 
@@ -42,16 +49,17 @@
   height: 50%;
   color: inherit;
   overflow: hidden;
-  border-width: 1px;
+  border: 2px;
   border-style: solid;
   transition: transform .5s ease;
+  opacity: 0.95;
 
   &:hover {
-    transform: scale(1.1);
-    cursor:pointer;
+    transform: scale(1.05);
+    cursor: pointer;
     color: white;
     text-decoration: none;
-    border-width: 1px;
-    border-style: solid;
+    opacity: 1;
+    border: none;
   }
 }
