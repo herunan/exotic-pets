@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-12">
 
       <h1 class= "green">Congrats!</h1>
-      <h2> You have booked <%= @pet.name %></h2>
+      <h2> You have booked <%= @booking.pet.name %></h2>
       <p> From : <%= @booking.start_date %> </p>
       <p>To : <%= @booking.end_date %></p>
       <div style="background-color: black;">
@@ -46,9 +46,9 @@
 <div id="reviews" class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-      <h2>How did it go? <strong>Review your experience with <%= @pet.name %>!</strong></h2>
-      <% if @pet.reviews.blank? %>
-        <p id="no-review">Be the first to leave a review for the <%= @pet.name %></p>
+      <h2>How did it go? <strong>Review your experience with <%= @booking.pet.name %>!</strong></h2>
+      <% if @booking.pet.reviews.blank? %>
+        <p id="no-review">Be the first to leave a review for the <%= @booking.pet.name %></p>
       <% else %>
         <% @pet.reviews.each do |review| %>
           <%= render 'reviews/show', review: review %>

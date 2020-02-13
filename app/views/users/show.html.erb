@@ -17,7 +17,7 @@
       <div class="cards-browse">
 
         <% @user.bookings.each do |booking| %>
-          <%= link_to pet_booking_path(booking) do %>
+          <%= link_to booking_path(booking) do %>
             <div class="card-pet">
               <div class="card-pet-image">
                 <img src=<%= cl_image_path booking.pet.photos.first.key, height: 200, crop: :fill if booking.pet.photos.attached? %> />
