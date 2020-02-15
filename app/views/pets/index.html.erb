@@ -8,6 +8,11 @@
             <div class="card-pet">
               <div class="card-pet-image">
                 <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
+                <h2 class="card-pet-rating">
+                  <% pet.average_rating.to_i.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </h2>
                 <h2 class="card-pet-species" ><%= pet.species.capitalize %></h2>
               </div>
               <div class="card-pet-infos">
@@ -16,7 +21,7 @@
                   <p><%= pet.description.truncate(60, separator: /\s/) %></p>
                 </div>
                 <h2 class="card-pet-price">£<%= pet.price %>0/day</h2>
-                <img class="card-pet-user avatar-bordered" src=<%= cl_image_path pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if pet.user.photo.attached? %> />
+                <img class="card-pet-user avatar avatar-bordered" src=<%= cl_image_path pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if pet.user.photo.attached? %> />
               </div>
             </div>
           <% end %>
