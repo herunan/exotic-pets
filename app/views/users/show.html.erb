@@ -1,108 +1,102 @@
 <div id="user-show" class="container">
   <div class="row justify-content">
 
-    <div class="card-profile col-12 col-md-3">
+    <div class="card-profile col-12">
 
-      <div id=user-profile>
-        <%= cl_image_tag @user.photo.key, width: 250, height: 250, radius: :max, crop: :fill, class: "avatar-extra-large avatar-bordered" if @user.photo.attached? %>
-        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <% if @user.pets.present? %>
-          <span class="badge badge-success">Owner</span>
-        <% end %>
-        <% if @user.bookings.present? %>
-          <span class="badge badge-primary">Borrower</span>
-        <% end %>
+      <div class="user-main-container">
+          <div id=user-profile>
+            <%= cl_image_tag @user.photo.key, width: 250, height: 250, radius: :max, crop: :fill, class: "avatar-extra-large avatar-bordered" if @user.photo.attached? %>
+            <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+            <% if @user.pets.present? %>
+              <span class="badge badge-success">Owner</span>
+            <% end %>
+            <% if @user.bookings.present? %>
+              <span class="badge badge-primary">Borrower</span>
+            <% end %>
+          </div>
+
+            <h2>About me</h2>
+            <p><%= @user.bio %></p>
+          <% if @user == current_user %>
+            <%= link_to 'Edit details', edit_user_path(@user), class: "btn btn-edit" %>
+          <% end %>
+
+          <% pet_owners_array = current_user.bookings.map do |booking|  %>
+            <% booking.pet.user.id %>
+          <% end %>
+
+
       </div>
 
-        <h2>About me</h2>
-        <p><%= @user.bio %></p>
-      <% if @user == current_user %>
-        <%= link_to 'Edit details', edit_user_path(@user), class: "btn btn-edit" %>
-      <% end %>
 
-      <% pet_owners_array = current_user.bookings.map do |booking|  %>
-        <% booking.pet.user.id %>
-      <% end %>
-      <% if pet_owners_array.include?(@user.id) %>
-      <div id="contact">
-        <h2>Contact</h2>
-        <%= link_to "https://wa.me/" + @user.phone_number.gsub(/\s+/, "") do %>
-          <i class="fab fa-whatsapp"></i>
-        <% end %>
-        <%= link_to @user.email do %>
-          <i class="far fa-envelope"></i>
-        <% end %>
-      <% end %>
     </div>
 
-  </div>
+        <div id="user-pets" class="col-12">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-owned-tab" data-toggle="tab" href="#nav-owned" role="tab" aria-controls="nav-owned" aria-selected="true">Owned</a>
+              <a class="nav-item nav-link" id="nav-borrowed-tab" data-toggle="tab" href="#nav-borrowed" role="tab" aria-controls="nav-borrowed" aria-selected="false">Borrowed</a>
+              <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Requests</a>
+            </div>
+          </nav>
 
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab">
 
-  <div id="user-pets" class="col-12 col-md-8">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-owned-tab" data-toggle="tab" href="#nav-owned" role="tab" aria-controls="nav-owned" aria-selected="true">Owned</a>
-      <a class="nav-item nav-link" id="nav-borrowed-tab" data-toggle="tab" href="#nav-borrowed" role="tab" aria-controls="nav-borrowed" aria-selected="false">Borrowed</a>
-      <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Requests</a>
-    </div>
-  </nav>
-
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-owned" role="tabpanel" aria-labelledby="nav-owned-tab">
-
-      <div class="cards-browse">
-          <% @user.pets.each do |pet| %>
-            <%= link_to pet_path(pet) do %>
-              <div class="card-pet">
-                <div class="card-pet-image">
-                  <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
-                  <h2 class="card-pet-species" ><%= pet.species.capitalize %></h2>
-                </div>
-                <div class="card-pet-infos">
-                  <div>
-                    <h2 class="card-pet-name"><%= pet.name %></h2>
-                    <p><%= pet.description.truncate(60, separator: /\s/) %></p>
-                  </div>
-                  <h2 class="card-pet-price">£<%= pet.price %>0/day</h2>
+              <div class="cards-browse">
+                  <% @user.pets.each do |pet| %>
+                    <%= link_to pet_path(pet) do %>
+                      <div class="card-pet">
+                        <div class="card-pet-image">
+                          <img src=<%= cl_image_path pet.photos.first.key, height: 200, crop: :fill if pet.photos.attached? %> />
+                          <h2 class="card-pet-species" ><%= pet.species.capitalize %></h2>
+                        </div>
+                        <div class="card-pet-infos">
+                          <div>
+                            <h2 class="card-pet-name"><%= pet.name %></h2>
+                            <p><%= pet.description.truncate(60, separator: /\s/) %></p>
+                          </div>
+                          <h2 class="card-pet-price">£<%= pet.price %>0/day</h2>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
 
-    </div>
-    <div class="tab-pane fade" id="nav-borrowed" role="tabpanel" aria-labelledby="nav-borrowed-tab">
 
-      <div class="cards-browse">
-          <% @user.bookings.each do |booking| %>
-            <%= link_to booking_path(booking) do %>
-              <div class="card-pet">
-                <div class="card-pet-image">
-                  <img src=<%= cl_image_path booking.pet.photos.first.key, height: 200, crop: :fill if booking.pet.photos.attached? %> />
-                  <h2 class="card-pet-species" ><%= booking.pet.species.capitalize %></h2>
-                </div>
-                <div class="card-pet-infos">
-                  <div>
-                    <h2 class="card-pet-name"><%= booking.pet.name %></h2>
-                    <p><%= booking.pet.description.truncate(60, separator: /\s/) %></p>
-                  </div>
-                  <h2 class="card-pet-price">£<%= booking.pet.price %>0/day</h2>
-                  <img class="card-pet-user avatar-bordered" src=<%= cl_image_path booking.pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if booking.pet.user.photo.attached? %> />
+            <div class="tab-pane fade" id="nav-borrowed" role="tabpanel" aria-labelledby="nav-borrowed-tab">
+
+              <div class="cards-browse">
+                  <% @user.bookings.each do |booking| %>
+                    <%= link_to booking_path(booking) do %>
+                      <div class="card-pet">
+                        <div class="card-pet-image">
+                          <img src=<%= cl_image_path booking.pet.photos.first.key, height: 200, crop: :fill if booking.pet.photos.attached? %> />
+                          <h2 class="card-pet-species" ><%= booking.pet.species.capitalize %></h2>
+                        </div>
+                        <div class="card-pet-infos">
+                          <div>
+                            <h2 class="card-pet-name"><%= booking.pet.name %></h2>
+                            <p><%= booking.pet.description.truncate(60, separator: /\s/) %></p>
+                          </div>
+                          <h2 class="card-pet-price">£<%= booking.pet.price %>0/day</h2>
+                          <img class="card-pet-user avatar-bordered" src=<%= cl_image_path booking.pet.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if booking.pet.user.photo.attached? %> />
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
-          <% end %>
+
+            <div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+            </div>
+
+            </div>
         </div>
-      </div>
-
     </div>
-    <div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
-
-    </div>
-
   </div>
-</div>
+<!-- </div> -->
 
 
 
