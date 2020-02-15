@@ -1,25 +1,33 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
-      <h1 class= "green" style="margin: 40px 0 40px;">Congrats!</h1>
-      <h2 style="margin-bottom: 16px;">You have booked <%= @booking.pet.name %></h2>
+      <%= render "shared/alert" %>
+
+      <h2 class= "green" style="margin: 40px 0 40px;">Borrow request confirmed!</h2>
       <% @booking.pet.photos.each_with_index do |photo, index| %>
       <div class="picture">
         <%= cl_image_tag photo.key if index == 0 %>
       </div>
         <% end %>
       <div class="booking-data">
-        <h3><strong>Booked dates</strong></h3>
-        <p><strong>From : </strong><%= @booking.start_date %></p>
-        <p><strong>To : </strong><%= @booking.end_date %></p>
+        <br>
+        <h3>Borrow dates</h3>
+        <p><strong>From: </strong><%= @booking.start_date %></p>
+        <p><strong>To: </strong><%= @booking.end_date %></p>
       </div>
       <div class="booking-data">
-        <h3><strong>Contact info</strong></h3>
-        <p><strong>Email - </strong><%= @pet.user.email %></p>
-        <p><strong>Phone number - </strong><%= @pet.user.phone_number %></p>
-      </div>
-</div>
-</div>
+        <h3>Contact the owner, <%= @pet.user.first_name %></h3>
+          <div id="contact">
+            <%= link_to "https://wa.me/" + @pet.user.phone_number.gsub(/\s+/, "") do %>
+              <i class="fab fa-whatsapp"></i>
+            <% end %>
+            <%= link_to @pet.user.email do %>
+              <i class="far fa-envelope"></i>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
 <div id="reviews" class="container-fluid">
