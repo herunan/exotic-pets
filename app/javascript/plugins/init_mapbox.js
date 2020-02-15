@@ -5,17 +5,7 @@ const fitMapToMarkers = (map, markers) => {
   markers.forEach(marker => {
    bounds.extend([ marker.lng, marker.lat ]);
  });
-  map.fitBounds(bounds, { padding: 70, duration: 10000, maxZoom: 10, zoom: 6 });
-};
-
-const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
-    const element = document.createElement('div');
-    element.className = 'marker';
-    new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-  });
+  map.fitBounds(bounds, { padding: 70, duration: 10000, maxZoom: 10, zoom: 15 });
 };
 
 const initMapbox = () => {
@@ -34,7 +24,6 @@ const initMapbox = () => {
       .addTo(map);
      });
     fitMapToMarkers(map, markers);
-    addMarkersToMap(map, markers);
   }
 };
 
