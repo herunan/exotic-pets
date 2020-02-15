@@ -2,10 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
 
-      <h1 class= "green">Congrats!</h1>
-      <h2> You have booked <%= @booking.pet.name %></h2>
-      <p> From : <%= @booking.start_date %> </p>
-      <p>To : <%= @booking.end_date %></p>
+      <%= render 'shared/alert' %>
+      <p> <strong> From :</strong> <%= @booking.start_date %> </p>
+      <p> <strong>To:</strong> <%= @booking.end_date %></p>
       <div style="background-color: black;">
       <div class="container">
         <div class="row">
