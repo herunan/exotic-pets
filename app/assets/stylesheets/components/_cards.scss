@@ -70,6 +70,14 @@
   text-overflow: ellipsis;
 }
 
+.card-pet-rating {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: $flirtatious;
+  font-size: 20px;
+}
+
 .card-pet-price {
   font-size: 16px;
   font-weight: bold;

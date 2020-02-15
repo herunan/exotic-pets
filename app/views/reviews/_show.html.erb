@@ -4,3 +4,7 @@
   <% end %>
   <%= " — " + review.content unless review.content.blank? %>
 </p>
+<p id="reviewer">
+  <img class="avatar avatar-bordered-nav" src=<%= cl_image_path review.user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face if review.user.photo.attached? %> />
+    <%= review.user.first_name %>, on <%= review.created_at.to_s(:stamp) %>
+</p>
