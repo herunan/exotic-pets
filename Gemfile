@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+#Jquery
+gem 'jquery-rails'
+
 # Map
 gem 'geocoder'
 gem 'dotenv-rails', groups: [:development, :test]
@@ -30,7 +33,6 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
 gem 'geocoder'
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -38,3 +38,25 @@
   }
 }
 
+.wrapper-img {
+  height: 600px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  line-height: 1.43;
+  border: none;
+}
+
+.modal-img {
+  max-width: 1000px;
+  margin: 1.75rem auto;
+  position: relative;
+  width: auto;
+  transform: none;
+}
+
+.modal {
+  margin-top: 32px;
+}
+
