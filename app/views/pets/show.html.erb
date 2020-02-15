@@ -1,92 +1,28 @@
-<!-- IMAGES IN A BOX STARTS HERE -->
-
-<div class="contain-pets">
-  <div class="contain-main">
-      <button type="button" data-toggle="modal" data-target="#exampleModal" class="wrapper-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @pet.photos[0].key, height: 500, crop: :fill %>')">
-    </button>
-  </div>
-  <% @pet.photos.each_with_index do |photo, index|  %>
-    <% if index >= 1 %>
-  <div class= "contain-pet">
-    <div class="pet">
-      <button type="button" data-toggle="modal" data-target="#exampleModal" class="wrapper-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 500, crop: :fill %>')">
-      </button>
-    </div>
-    </div>
-  <% end %>
-
-  <% end %>
-</div>
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-img">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-    </button>
-    <div class="modal-body">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <% @pet.photos.each_with_index do |_, index| %>
-            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-          <% end %>
-        </ol>
-      <div class="carousel-inner">
-        <% @pet.photos.each_with_index do |photo, index|  %>
-          <div class="carousel-item <%= 'active' if index == 0 %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 500, crop: :fill %>')">
-          </div>
-        <% end %>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-<!-- IMAGES FINISH HERE -->
-
-
-<!-- CAROUSEL STARTS HERE -->
-
-<!--       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <% @pet.photos.each_with_index do |_, index| %>
-            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-          <% end %>
-        </ol>
-        <div class="carousel-inner">
-          <% @pet.photos.each_with_index do |photo, index|  %>
-            <div class="carousel-item <%= 'active' if index == 0 %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 500, crop: :fill %>')">
-
-            </div>
-          <% end %>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @pet.photos.each_with_index do |_, index| %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+    <% end %>
+  </ol>
+    <div class="carousel-inner">
+      <% @pet.photos.each_with_index do |photo, index|  %>
+        <div class="carousel-item <%= 'active' if index == 0 %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 500, crop: :fill %>')">
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+      <% end %>
     </div>
-  </div> -->
-
-  <!-- CAROUSEL FINISH HERE -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
 
 <div id="pet-show" class="container">
   <div class="row justify-content-between">
+
     <div id="pet-details" class="col-12 col-md-6">
       <img class="avatar-large avatar-bordered" src=<%= cl_image_path @pet.user.photo.key, width: 80, height: 80, crop: :thumb, gravity: :face if @pet.user.photo.attached? %> />
       <h1><%= @pet.name %></h1>
@@ -105,6 +41,7 @@
       </div>
       <%= link_to '<i class="fa fa-arrow-left"></i> Back to listings'.html_safe, root_path, class: "link" %>
     </div>
+
     <div id="booking-form" class="col-12 col-md-4 card">
       <h2>Borrow <%= @pet.name %> for £<%= @pet.price %>/day</h2>
       <% if @booking.pet == @pet && @booking.user == current_user %>
@@ -130,5 +67,3 @@
     </div>
   </div>
 </div>
-
-
