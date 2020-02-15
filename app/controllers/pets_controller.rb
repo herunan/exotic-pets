@@ -13,9 +13,8 @@ class PetsController < ApplicationController
 
   def show
     @booking = Booking.new # This enables new booking in the show page
-    @pet_location = Pet.geocoded #returns pet with coordinates
-
-    @markers = @pet_location.map do |pet|
+    @pet_locations = Pet.geocoded.where(id: @pet.id) #returns pet with coordinates
+    @markers = @pet_locations.map do |pet|
       {
         lat: pet.latitude,
         lng: pet.longitude,
