@@ -5,7 +5,7 @@ const fitMapToMarkers = (map, markers) => {
   markers.forEach(marker => {
    bounds.extend([ marker.lng, marker.lat ]);
  });
-  map.fitBounds(bounds, { padding: 70, duration: 10000, maxZoom: 10, zoom: 15 });
+  map.fitBounds(bounds, { padding: 70, duration: 10000, maxZoom: 10, zoom: 4 });
 };
 
 const initMapbox = () => {
