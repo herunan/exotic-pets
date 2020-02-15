@@ -1,0 +1,8 @@
+ a {
+  color: $reptile-green;
+  transition: $quick;
+  &:hover {
+    color: $algal-fuel;
+    text-decoration: none;
+  }
+}

@@ -102,8 +102,9 @@
 /* Profile card */
 
 .card-profile {
+  margin: 3 * $spacer;
   overflow: hidden;
-  padding: 50px;
+  padding: 4 * $spacer;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
