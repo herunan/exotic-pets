@@ -1,0 +1,40 @@
+#pet-show, #booking-form, #reviews {
+  padding-top: 4 * $spacer;
+  padding-bottom: 4 * $spacer;
+  h2 {
+    padding-bottom: 2 * $spacer;
+  }
+}
+
+#reviews {
+  color: white;
+  background-color: black;
+  p {
+    font-size: 14pt;
+  }
+}
+
+#review {
+  padding-left: 1.5 * $spacer;
+  border-left: 4px solid $reptile-green;
+}
+
+#reviewer {
+  padding-bottom: 2 * $spacer;
+}
+
+#star-rating {
+  color: $flirtatious;
+}
+
+@media(max-width: 768px) {
+  #booking-form, #reviews {
+    padding-top: 3 * $spacer;
+    padding-bottom: 1.5 * $spacer;
+  }
+  #booking-form {
+    padding-top: 1.5 * $spacer;
+    padding-bottom: 3 * $spacer;
+  }
+}
+
