@@ -2,8 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-12">
 
-      <h1 class= "green">Congrats!</h1>
-      <h2> You have booked <%= @booking.pet.name %></h2>
+      <%= render 'shared/alert' %>
       <p> From : <%= @booking.start_date %> </p>
       <p>To : <%= @booking.end_date %></p>
       <div style="background-color: black;">
