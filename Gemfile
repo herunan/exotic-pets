@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+#Jquery
+gem 'jquery-rails'
+
 # Map
 gem 'geocoder'
 gem 'dotenv-rails', groups: [:development, :test]
