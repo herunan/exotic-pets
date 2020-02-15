@@ -1,0 +1,54 @@
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://images.unsplash.com/photo-1496368047060-2225dc0a96b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(60%);
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    text-align: center;
+    margin-bottom: 500px;
+
+}
+
+.hero-title {
+    font-size: 3rem;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    margin: 1.2rem 0rem;
+}
+
+#down {
+ position: absolute;
+ font-size: 2.5em;
+}
+#down:hover
+{
+ cursor: pointer;
+ background-color: #eee;
+ opacity: 0.8;
+}
+
+.down-arrow {
+    text-align: center
+}
