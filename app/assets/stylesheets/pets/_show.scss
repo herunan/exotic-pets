@@ -27,14 +27,14 @@
   color: $flirtatious;
 }
 
+#booking-form {
+  height: 220px;
+}
+
 @media(max-width: 768px) {
   #booking-form, #reviews {
-    padding-top: 3 * $spacer;
+    padding-top: 1 $spacer;
     padding-bottom: 1.5 * $spacer;
-  }
-  #booking-form {
-    padding-top: 1.5 * $spacer;
-    padding-bottom: 3 * $spacer;
   }
 }
 
