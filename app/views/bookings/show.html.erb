@@ -4,8 +4,8 @@
 
       <h1 class= "green">Congrats!</h1>
       <h2> You have booked <%= @booking.pet.name %></h2>
-      <p> From : <%= @booking.start_date %> </p>
-      <p>To : <%= @booking.end_date %></p>
+      <p> From : <%= @booking.start_date(:stamp) %> </p>
+      <p>To : <%= @booking.end_date(:stamp) %></p>
       <div style="background-color: black;">
       <div class="container">
         <div class="row">

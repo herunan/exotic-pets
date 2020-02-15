@@ -24,6 +24,17 @@
           <% pet_owners_array = current_user.bookings.map do |booking|  %>
             <% booking.pet.user.id %>
           <% end %>
+          <div id="contact">
+          <% if pet_owners_array.include?(@user.id) %>
+            <h2>Contact</h2>
+            <%= link_to "https://wa.me/" + @user.phone_number.gsub(/\s+/, "") do %>
+              <i class="fab fa-whatsapp"></i>
+            <% end %>
+            <%= link_to @user.email do %>
+              <i class="far fa-envelope"></i>
+            <% end %>
+          <% end %>
+          </div>
 
 
       </div>
